@@ -119,18 +119,16 @@ init_apa_results <- function(){
 #' validate(in_paren, check_class = "numeric", check_length = 1)
 #' }
 
-escape_latex <- function (x, newlines = FALSE, spaces = FALSE) {
+escape_latex <- function(x, newlines = FALSE, spaces = FALSE) {
   if(is.null(x)) return(x)
 
-  x <- gsub("\\\\", "\\\\textbackslash", x)
-  x <- gsub("([#$%&_{}])", "\\\\\\1", x)
-  x <- gsub("\\\\textbackslash", "\\\\textbackslash{}", x)
-  x <- gsub("~", "\\\\textasciitilde{}", x)
-  x <- gsub("\\^", "\\\\textasciicircum{}", x)
-  if (newlines)
-    x <- gsub("(?<!\n)\n(?!\n)", "\\\\\\\\", x, perl = TRUE)
-  if (spaces)
-    x <- gsub("  ", "\\\\ \\\\ ", x)
+  x <- gsub('\\\\', '\\\\textbackslash', x, useBytes = TRUE)
+  x <- gsub('([#$%&_{}])', '\\\\\\1', x, useBytes = TRUE)
+  x <- gsub('\\\\textbackslash', '\\\\textbackslash{}', x, useBytes = TRUE)
+  x <- gsub('~', '\\\\textasciitilde{}', x, useBytes = TRUE)
+  x <- gsub('\\^', '\\\\textasciicircum{}', x, useBytes = TRUE)
+  if(newlines) x <- gsub('(?<!\n)\n(?!\n)', '\\\\\\\\', x, perl = TRUE, useBytes = TRUE)
+  if(spaces) x <- gsub('  ', '\\\\ \\\\ ', x, useBytes = TRUE)
 
   x
 }
