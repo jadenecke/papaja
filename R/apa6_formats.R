@@ -143,12 +143,12 @@ apa6_pdf <- function(
     output_text <- gsub("\\\\abstract\\{\n\n\\}", "", output_text, useBytes = TRUE)
 
     # Remove pandoc listof...s
-    if(sum(gregexpr("\\listoffigures", output_text, fixed = TRUE)[[1]] > 0)) {
-      output_text <- sub("\\\\listoffigures", "", output_text, useBytes = TRUE) # Replace first occurance
-    }
-    if(sum(gregexpr("\\listoftables", output_text, fixed = TRUE)[[1]] > 0)) {
-      output_text <- sub("\\\\listoftables", "", output_text, useBytes = TRUE) # Replace first occurance
-    }
+    #if(sum(gregexpr("\\listoffigures", output_text, fixed = TRUE)[[1]] > 0)) {
+    #  output_text <- sub("\\\\listoffigures", "", output_text, useBytes = TRUE) # Replace first occurance
+    #}
+    #if(sum(gregexpr("\\listoftables", output_text, fixed = TRUE)[[1]] > 0)) {
+    #  output_text <- sub("\\\\listoftables", "", output_text, useBytes = TRUE) # Replace first occurance
+    #}
 
     # Prevent (re-)loading of geometry package
     output_text <- gsub("\\\\usepackage\\[?.*\\]?\\{geometry\\}", "", output_text, useBytes = TRUE)
